@@ -8,20 +8,7 @@ import { TodoItem } from './models/todo-item';
 })
 export class AppComponent {
   title = 'TodoList';
-  items: TodoItem[] = [
-    {
-      description: "Comprar carne",
-      isCompleted: false
-    },
-    {
-      description: "Comprar carbón",
-      isCompleted: true
-    },
-    {
-      description: "Prender fuego",
-      isCompleted: false
-    }
-  ];
+  items: TodoItem[] = [];
 
 
 

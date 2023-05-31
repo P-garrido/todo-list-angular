@@ -8,10 +8,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TodoNewItemComponent {
 
 
-  @Output() addNewItem = new EventEmitter();
+  @Output() addNewItem = new EventEmitter<HTMLInputElement>();
 
 
-  addItem(newItem: any) {
+  addItem(newItem: HTMLInputElement) {
     this.addNewItem.emit(newItem)
   }
 

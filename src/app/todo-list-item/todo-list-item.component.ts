@@ -17,8 +17,7 @@ export class TodoListItemComponent {
     item.isCompleted = !item.isCompleted;
   }
 
-  removeItem(i: any) {
-    console.log(i);
+  removeItem(i: number) {
     this.removeItemClick.emit(i);
   }
 
