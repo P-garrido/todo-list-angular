@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TodoItem } from '../models/todo-item';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -6,13 +7,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent {
-  @Input() item: any;
-  @Input() index: any;
+  @Input() item: TodoItem;
+  @Input() index: number;
 
-  @Output() removeItemClick = new EventEmitter()
+  @Output() removeItemClick = new EventEmitter<number>();
   constructor() { }
 
-  changeState(item: any) {
+  changeState(item: TodoItem) {
     item.isCompleted = !item.isCompleted;
   }
 

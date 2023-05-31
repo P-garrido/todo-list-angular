@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-new-item.component.scss']
 })
 export class TodoNewItemComponent {
-  @Input() items: any;
+
 
   @Output() addNewItem = new EventEmitter();
 

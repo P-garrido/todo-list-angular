@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoItem } from './models/todo-item';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TodoList';
-  items = [
+  items: TodoItem[] = [
     {
       description: "Comprar carne",
       isCompleted: false
@@ -24,7 +25,7 @@ export class AppComponent {
 
 
 
-  addItem(newItem: any) {
+  addItem(newItem: HTMLInputElement) {
     this.items.push(
       {
         description: newItem.value,
@@ -34,7 +35,7 @@ export class AppComponent {
     newItem.value = "";
   }
 
-  removeItem(i: any) {
+  removeItem(i: number) {
     this.items.splice(i, 1);
   }
 }
