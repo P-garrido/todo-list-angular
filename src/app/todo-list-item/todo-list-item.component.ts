@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
+import { TodoStorageService } from '../todo-storage.service';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -7,14 +8,18 @@ import { TodoItem } from '../models/todo-item';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent {
+
+  constructor(private service: TodoStorageService) { }
+
+  //MAIN
   @Input() item: TodoItem;
   @Input() index: number;
 
   @Output() removeItemClick = new EventEmitter<number>();
-  constructor() { }
+
 
   changeState(item: TodoItem) {
-    item.isCompleted = !item.isCompleted;
+    this.service.changeState(item);
   }
 
   removeItem(i: number) {

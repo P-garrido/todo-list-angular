@@ -1,28 +1,29 @@
 import { Component } from '@angular/core';
-import { TodoItem } from './models/todo-item';
+import { TodoStorageService } from './todo-storage.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
+
+  //myItems: any;
+  constructor(private service: TodoStorageService) {
+    //this.myItems = service.items;
+  }
   title = 'TodoList';
-  items: TodoItem[] = [];
 
-
-
-  addItem(newItem: HTMLInputElement) {
-    this.items.push(
-      {
-        description: newItem.value,
-        isCompleted: false
-      }
-    )
-    newItem.value = "";
+  getItems() {
+    return this.service.items;
+  }
+  addItem(newItem: FormControl) {
+    this.service.add(newItem);
   }
 
   removeItem(i: number) {
-    this.items.splice(i, 1);
+    this.service.remove(i);
   }
 }
