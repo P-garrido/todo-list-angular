@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-new-item',
@@ -8,11 +9,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TodoNewItemComponent {
 
 
-  @Output() addNewItem = new EventEmitter<HTMLInputElement>();
+  @Output() addNewItem = new EventEmitter<FormControl>();
 
 
-  addItem(newItem: HTMLInputElement) {
-    this.addNewItem.emit(newItem)
+
+  name = new FormControl('', Validators.required);
+
+
+  sendItem() {
+    this.addNewItem.emit(this.name);
+    this.name.reset();
   }
 
 }

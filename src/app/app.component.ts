@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoItem } from './models/todo-item';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +13,20 @@ export class AppComponent {
 
 
 
-  addItem(newItem: HTMLInputElement) {
+  addItem(newItem: FormControl) {
     this.items.push(
       {
         description: newItem.value,
         isCompleted: false
       }
     )
-    newItem.value = "";
   }
 
   removeItem(i: number) {
     this.items.splice(i, 1);
+  }
+
+  editItem(e: any) {
+    console.log(e);
   }
 }

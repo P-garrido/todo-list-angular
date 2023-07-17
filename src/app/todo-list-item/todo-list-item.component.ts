@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -8,19 +9,34 @@ import { TodoItem } from '../models/todo-item';
 })
 export class TodoListItemComponent {
 
-  //FORM CONTROL
+
   @Input() item: TodoItem;
   @Input() index: number;
 
   @Output() removeItemClick = new EventEmitter<number>();
-  constructor() { }
+  @Output() editItemClick = new EventEmitter<[number, FormControl]>();
+
+  onEdit: boolean = false;
+
+  editName = new FormControl('');
 
   changeState(item: TodoItem) {
     item.isCompleted = !item.isCompleted;
   }
 
-  removeItem(i: number) {
-    this.removeItemClick.emit(i);
+  removeItem() {
+    this.removeItemClick.emit(this.index);
+  }
+
+  edit() {
+    if (this.onEdit) {
+      this.onEdit = false;
+      this.editItemClick.emit([this.index, this.editName]);
+      this.editName.reset();
+    }
+    else {
+      this.onEdit = true;
+    }
   }
 
 }
