@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoItem } from './models/todo-item';
+import { TodoItem, EditEvent } from './models/todo-item';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -26,7 +26,7 @@ export class AppComponent {
     this.items.splice(i, 1);
   }
 
-  editItem(e: any) {
-    console.log(e);
+  editItem(e: EditEvent) {
+    this.items[e.index].description = e.name.value;
   }
 }
