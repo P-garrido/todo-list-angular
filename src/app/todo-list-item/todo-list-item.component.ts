@@ -7,6 +7,8 @@ import { TodoItem } from '../models/todo-item';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent {
+
+  //FORM CONTROL
   @Input() item: TodoItem;
   @Input() index: number;
 
