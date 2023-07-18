@@ -6,6 +6,7 @@
   <app-todo-new-item (addNewItem)="addItem($event)"></app-todo-new-item>
 </div>
 
-<div class="item" [ngClass]="{done:this.item.isCompleted==true}" *ngFor="let item of getItems(); let i=index">
-  <app-todo-list-item [item]="item" [index]="i" (removeItemClick)="removeItem($event)"></app-todo-list-item>
+<div class="item" [ngClass]="{done:this.item.isCompleted==true}" *ngFor="let item of items; let i=index">
+  <app-todo-list-item [item]="item" [index]="i" (removeItemClick)="removeItem($event)"
+    (editItemClick)="editItem($event)"></app-todo-list-item>
 </div>

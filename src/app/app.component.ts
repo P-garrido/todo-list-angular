@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoStorageService } from './todo-storage.service';
+import { TodoItem, EditEvent } from './models/todo-item';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,14 +16,23 @@ export class AppComponent {
   }
   title = 'TodoList';
 
-  getItems() {
-    return this.service.items;
-  }
-  addItem(newItem: FormControl) {
-    this.service.add(newItem);
+
+
+  addItem(newItem: HTMLInputElement) {
+    this.items.push(
+      {
+        description: newItem.value,
+        isCompleted: false
+      }
+    )
+    newItem.value = "";
   }
 
   removeItem(i: number) {
     this.service.remove(i);
+  }
+
+  editItem(e: EditEvent) {
+    this.items[e.index].description = e.name.value;
   }
 }

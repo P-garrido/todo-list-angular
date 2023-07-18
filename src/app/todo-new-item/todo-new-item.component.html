@@ -1,2 +1,2 @@
-<input type="text" [formControl]="item">
-<button (click)="addItem()">Agregar</button>
+<input [formControl]="name" type="text">
+<button type="button" (click)="sendItem()" [disabled]="!name.valid">Agregar</button>

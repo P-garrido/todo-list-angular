@@ -1,9 +1,13 @@
 <div class="flex-item">
   <span>{{index+1}} - </span>
-  <span class="description">{{item.description}}</span>
+  <span *ngIf="onEdit==false" class="description">{{item.description}}</span>
+
+  <input class="edit" *ngIf="onEdit==true" type="text" [formControl]="editName">
+  <button *ngIf="onEdit==true" [disabled]="!editName.valid" (click)="sendEdit()">Aceptar</button>
 </div>
 <div class="flex-item">
   <button (click)="changeState(item)" class="state">
     {{item.isCompleted ? 'Completado' : 'Incompleto'}}</button>
-  <button *ngIf="item.isCompleted==false" (click)="removeItem(index)">X</button>
+  <button (click)="edit()">{{onEdit?'Cancelar':'Editar'}}</button>
+  <button *ngIf="item.isCompleted==false" (click)="removeItem()">X</button>
 </div>
