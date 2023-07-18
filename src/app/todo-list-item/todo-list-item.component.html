@@ -1,10 +1,9 @@
 <div class="flex-item">
   <span>{{index+1}} - </span>
-  <span class="description">{{item.description}}</span>
-  <div *ngIf="onEdit==true">
-    <input type="text" [formControl]="editName">
-    <button [disabled]="!editName.valid" (click)="sendEdit()">Aceptar</button>
-  </div>
+  <span *ngIf="onEdit==false" class="description">{{item.description}}</span>
+
+  <input class="edit" *ngIf="onEdit==true" type="text" [formControl]="editName">
+  <button *ngIf="onEdit==true" [disabled]="!editName.valid" (click)="sendEdit()">Aceptar</button>
 </div>
 <div class="flex-item">
   <button (click)="changeState(item)" class="state">

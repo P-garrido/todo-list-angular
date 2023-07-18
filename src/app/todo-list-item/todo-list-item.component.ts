@@ -9,7 +9,6 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class TodoListItemComponent {
 
-
   @Input() item: TodoItem;
   @Input() index: number;
 
@@ -17,8 +16,11 @@ export class TodoListItemComponent {
   @Output() editItemClick = new EventEmitter<EditEvent>();
 
   onEdit: boolean = false;
-
   editName = new FormControl('', Validators.required);
+  ngOnInit() {
+    this.editName.setValue(`${this.item.description}`)
+  }
+
 
   changeState(item: TodoItem) {
     item.isCompleted = !item.isCompleted;
