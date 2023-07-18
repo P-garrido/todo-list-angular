@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoItem } from '../models/todo-item';
+import { EditEvent, TodoItem } from '../models/todo-item';
+import { TodoStorageService } from '../todo-storage.service';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -8,12 +9,8 @@ import { TodoItem } from '../models/todo-item';
 })
 export class TodoListItemComponent {
 
-<<<<<<< HEAD
   constructor(private service: TodoStorageService) { }
 
-  //MAIN
-=======
->>>>>>> todoFormControl
   @Input() item: TodoItem;
   @Input() index: number;
 
