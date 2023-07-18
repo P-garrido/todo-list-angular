@@ -11,9 +11,12 @@ export class TodoNewItemComponent {
 
   @Output() addNewItem = new EventEmitter<FormControl>();
 
+  name = new FormControl('', Validators.required);
 
-  addItem(newItem: HTMLInputElement) {
-    this.addNewItem.emit(newItem)
+
+  sendItem() {
+    this.addNewItem.emit(this.name)
+    this.name.reset();
   }
 
 }

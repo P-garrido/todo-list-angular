@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoItem } from './models/todo-item';
+import { EditEvent, TodoItem } from './models/todo-item';
 import { FormControl } from '@angular/forms';
 
 @Injectable({
@@ -31,6 +31,9 @@ export class TodoStorageService {
     item.isCompleted = !item.isCompleted;
   }
 
+  editItem(e: EditEvent) {
+    this.items[e.index].description = e.name.value;
+  }
 
 
 }

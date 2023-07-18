@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { EditEvent, TodoItem } from '../models/todo-item';
 import { TodoStorageService } from '../todo-storage.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -15,8 +16,6 @@ export class TodoListItemComponent {
   @Input() index: number;
 
   @Output() removeItemClick = new EventEmitter<number>();
-<<<<<<< HEAD
-=======
   @Output() editItemClick = new EventEmitter<EditEvent>();
 
   onEdit: boolean = false;
@@ -24,7 +23,6 @@ export class TodoListItemComponent {
   ngOnInit() {
     this.editName.setValue(`${this.item.description}`)
   }
->>>>>>> todoFormControl
 
 
   changeState(item: TodoItem) {
@@ -41,6 +39,7 @@ export class TodoListItemComponent {
     }
     else {
       this.onEdit = true;
+      this.editName.setValue(`${this.item.description}`);
     }
   }
 

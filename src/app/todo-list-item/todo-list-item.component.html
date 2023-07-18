@@ -6,8 +6,8 @@
   <button *ngIf="onEdit==true" [disabled]="!editName.valid" (click)="sendEdit()">Aceptar</button>
 </div>
 <div class="flex-item">
-  <button (click)="changeState(item)" class="state">
+  <button *ngIf="onEdit==false" (click)="changeState(item)" class="state">
     {{item.isCompleted ? 'Completado' : 'Incompleto'}}</button>
-  <button (click)="edit()">{{onEdit?'Cancelar':'Editar'}}</button>
+  <button *ngIf="item.isCompleted==false" (click)="edit()">{{onEdit?'Cancelar':'Editar'}}</button>
   <button *ngIf="item.isCompleted==false" (click)="removeItem()">X</button>
 </div>
